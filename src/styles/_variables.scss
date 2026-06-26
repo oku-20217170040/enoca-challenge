@@ -13,8 +13,8 @@
   --color-text-muted: #94a3b8;
 
   // Brand rengi (accent)
-  --color-primary: #4f46e5;         // indigo — #6366f1'den koyulaştırıldı (5.7:1 white contrast)
-  --color-primary-hover: #3730a3;
+  --color-primary: #6366f1;         // indigo
+  --color-primary-hover: #4f46e5;
   --color-primary-light: #eef2ff;
 
   // Durum renkleri
@@ -74,7 +74,6 @@
   --color-text-secondary: #b0bdd0;   // #94a3b8'den açıldı — WCAG AA kontrast için
   --color-text-muted: #8896aa;       // #64748b'den açıldı
   --color-primary-light: #1e1b4b;
-  --color-success: #4ade80;          // dark modda #22c55e yetersiz kontrast, açıldı
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
