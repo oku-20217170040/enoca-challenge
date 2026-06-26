@@ -82,7 +82,8 @@ const Navbar: React.FC = () => {
       <div
         id="mobile-menu"
         className={`${styles.mobileMenu} ${isMenuOpen ? styles.mobileMenuOpen : ''}`}
-        {...(!isMenuOpen ? { inert: '' } : {})}
+        // @ts-expect-error — inert henüz React'in tip tanımlarına eklenmedi
+        inert={!isMenuOpen ? '' : undefined}
       >
         <ul role="list">
           {navLinks.map((link) => (

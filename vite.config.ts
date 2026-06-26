@@ -9,9 +9,10 @@ export default defineConfig({
     rollupOptions: {
       output: {
         // Manuel kod bölme: React'i ayrı vendor chunk'a al
-        // Böylece uygulama kodu değişince React cache'den gelir
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
+        manualChunks: (id: string) => {
+          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
+            return 'vendor';
+          }
         },
       },
     },
