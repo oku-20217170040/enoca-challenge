@@ -1,0 +1,68 @@
+@use '../../styles/mixins' as m;
+
+.overlay {
+  position: fixed;    // viewport'a sabitli
+  inset: 0;          // top/right/bottom/left = 0 kısaltması
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  @include m.flex-center;
+  z-index: 1000;
+  animation: fadeIn var(--transition-fast);
+}
+
+.modal {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideUp var(--transition-base);
+  border: 1px solid var(--color-border);
+}
+
+.sm  { max-width: 400px; }
+.md  { max-width: 560px; }
+.lg  { max-width: 800px; }
+
+.header {
+  @include m.flex-between;
+  padding: var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.title {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+}
+
+.closeBtn {
+  @include m.button-reset;
+  @include m.focus-ring;
+  @include m.flex-center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-lg);
+  transition: all var(--transition-fast);
+
+  &:hover {
+    background: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+  }
+}
+
+.body {
+  padding: var(--space-6);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}

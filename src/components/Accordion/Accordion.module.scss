@@ -1,0 +1,65 @@
+@use '../../styles/mixins' as m;
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.item {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-surface);
+}
+
+.heading {
+  margin: 0;   // browser h3 default margin'ini sıfırla
+}
+
+.trigger {
+  @include m.button-reset;
+  @include m.flex-between;
+  @include m.focus-ring;
+  width: 100%;
+  padding: var(--space-4) var(--space-6);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-align: left;
+  transition: background-color var(--transition-fast);
+
+  &:hover {
+    background: var(--color-bg-secondary);
+  }
+}
+
+.icon {
+  font-size: 1.25rem;
+  transition: transform var(--transition-base);
+  flex-shrink: 0;   // metin uzasa da ikon küçülmesin
+  color: var(--color-primary);
+}
+
+.iconOpen {
+  transform: rotate(180deg);
+}
+
+// Panel animasyonu — hidden attribute ile birlikte çalışır
+// Not: hidden=true olduğunda display:none olur, CSS animasyonu çalışmaz
+// Bu yüzden panelOpen class ile görünürlüğü yönetiyoruz
+.panel {
+  // hidden attribute'u override etmiyoruz, onun yerine class kullanıyoruz
+}
+
+.panelOpen {
+  // display:block zaten hidden olmadığı için aktif
+}
+
+.panelInner {
+  padding: 0 var(--space-6) var(--space-4);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-4);
+}

@@ -1,0 +1,100 @@
+@use '../../styles/mixins' as m;
+
+.section {
+  padding: var(--space-24) 0;
+  background: var(--color-bg);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.title {
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--space-4);
+  @include m.mobile { font-size: var(--font-size-3xl); }
+}
+
+.subtitle {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-lg);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: var(--space-8);
+  align-items: start;
+
+  @include m.tablet { grid-template-columns: 1fr; }
+  @include m.mobile { grid-template-columns: 1fr; }
+}
+
+.formCard {
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+
+  @include m.mobile { grid-template-columns: 1fr; }
+}
+
+.submitRow {
+  margin-top: var(--space-2);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+
+  @include m.tablet {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+.infoCard {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+
+  @include m.tablet { flex: 1; min-width: 200px; }
+}
+
+.infoIcon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.infoLabel {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  display: block;
+  margin-bottom: var(--space-1);
+}
+
+.infoValue {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+}
+
+.successContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  text-align: center;
+
+  p { color: var(--color-text-secondary); }
+}
+
+.successIcon { font-size: 3rem; }

@@ -1,0 +1,49 @@
+@use '../../styles/mixins' as m;
+
+.card {
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  transition: all var(--transition-base);
+}
+
+// Padding varyantları
+.padding-sm  { padding: var(--space-4); }
+.padding-md  { padding: var(--space-6); }
+.padding-lg  { padding: var(--space-8); }
+
+// Stil varyantları
+.default  { box-shadow: var(--shadow-sm); border: 1px solid var(--color-border); }
+.elevated { box-shadow: var(--shadow-md); }
+.outline  { border: 2px solid var(--color-border); }
+
+.highlighted {
+  border: 2px solid var(--color-primary);
+  box-shadow: var(--shadow-md);
+  position: relative;
+
+  // "En Popüler" rozeti
+  &::before {
+    content: attr(data-badge);   // JS'ten data-badge="En Popüler" ile set edilir
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-primary);
+    color: #fff;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    white-space: nowrap;
+  }
+}
+
+.clickable {
+  cursor: pointer;
+  @include m.focus-ring;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+}

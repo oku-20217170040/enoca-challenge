@@ -1,0 +1,127 @@
+@use '../../styles/mixins' as m;
+
+.section {
+  padding: var(--space-24) 0;
+  background: var(--color-bg);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--space-12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.title {
+  font-size: var(--font-size-4xl);
+  @include m.mobile { font-size: var(--font-size-3xl); }
+}
+
+.subtitle {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-lg);
+}
+
+.toggle {
+  display: flex;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: var(--space-1);
+}
+
+.toggleBtn {
+  @include m.button-reset;
+  @include m.focus-ring;
+  @include m.flex-center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.toggleActive {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.discount {
+  background: rgba(255, 255, 255, 0.25);
+  padding: 2px 6px;
+  border-radius: var(--radius-full);
+  font-size: 0.7rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  align-items: start;
+
+  @include m.tablet { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+  @include m.mobile { grid-template-columns: 1fr; }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.planHeader { display: flex; flex-direction: column; gap: var(--space-2); }
+
+.planName { font-size: var(--font-size-xl); font-weight: 700; }
+
+.planDesc { font-size: var(--font-size-sm); color: var(--color-text-secondary); }
+
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-1);
+}
+
+.currency {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-text-secondary);
+}
+
+.amount {
+  font-size: var(--font-size-5xl);
+  font-weight: 800;
+  color: var(--color-text-primary);
+  line-height: 1;
+  transition: all var(--transition-base);
+}
+
+.period {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  flex: 1;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.check {
+  color: var(--color-success);
+  font-weight: 700;
+  flex-shrink: 0;
+}
