@@ -127,4 +127,7 @@ Detaylar için bkz. [`/docs/`](./docs/) klasörü (ADR dosyaları).
 | Best Practices | 100 |
 | SEO | 100 |
 
-Detaylı raporlar: [`docs/Lighthouse_1.html`](./docs/Lighthouse_1.html) · [`docs/Lighthouse_2.html`](./docs/Lighthouse_2.html) · [`docs/Lighthouse_3.html`](./docs/Lighthouse_3.html)
+Detaylı raporlar:
+- Rapor 1: [HTML](./docs/Lighthouse_1.html) · [PDF](./docs/Lighthouse_1.pdf)
+- Rapor 2: [HTML](./docs/Lighthouse_2.html) · [PDF](./docs/Lighthouse_2.pdf)
+- Rapor 3: [HTML](./docs/Lighthouse_3.html) · [PDF](./docs/Lighthouse_3.pdf)
