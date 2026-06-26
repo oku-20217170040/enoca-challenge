@@ -1,32 +1,130 @@
-# React + TypeScript + Vite
+# Enoca Frontend Challenge — Mini Landing + Bileşen Kütüphanesi
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Tek sayfalık ürün tanıtım landing sayfası ve yeniden kullanılabilir UI bileşen kütüphanesi.
 
-Currently, two official plugins are available:
+## Canlı Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+[enoca-challenge.vercel.app](https://enoca-challenge.vercel.app)
 
-## React Compiler
+## Kurulum
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+# Bağımlılıkları yükle
+npm install
 
-## Expanding the Oxlint configuration
+# Geliştirme sunucusu başlat (http://localhost:5173)
+npm run dev
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+# Production build
+npm run build
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+# Build önizleme
+npm run preview
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Mimari
+
+```
+src/
+├── components/          # Yeniden kullanılabilir UI bileşenleri
+│   ├── Accordion/       # SSS accordion (aria-expanded, keyboard nav)
+│   ├── Button/          # Variant/size/loading destekli buton
+│   ├── Card/            # Tıklanabilir/statik kart
+│   ├── Input/           # Label + validasyon + hata mesajlı input
+│   ├── Modal/           # Focus trap, ESC kapat, scroll lock
+│   └── Navbar/          # Sticky header, hamburger menü, scroll shadow
+├── sections/            # Landing page bölümleri
+│   ├── Hero/            # Ana başlık, CTA, istatistikler
+│   ├── Features/        # Özellik kartları grid
+│   ├── Pricing/         # Aylık/Yıllık fiyat kartları
+│   ├── FAQ/             # Accordion ile SSS
+│   └── Contact/         # İletişim formu + Modal
+├── hooks/
+│   └── useTheme.ts      # Light/Dark tema, localStorage, prefers-color-scheme
+└── styles/
+    ├── _variables.scss  # CSS custom properties (tema token'ları)
+    ├── _mixins.scss     # Breakpoint, flex, focus-ring mixin'leri
+    └── global.scss      # Reset + base stiller
+```
+
+## Teknik Kararlar
+
+Detaylar için bkz. [`/docs/`](./docs/) klasörü (ADR dosyaları).
+
+| Karar | Seçim | Neden |
+|---|---|---|
+| Framework | React + TypeScript | Bileşen yapısı için ideal, TS props güvenliği sağlıyor |
+| Build tool | Vite | Webpack'ten 10x hızlı HMR |
+| Stil | SCSS + CSS Modules | Global çakışma yok, tema için CSS custom properties |
+| Tema | CSS variables + data-theme | JS olmadan tema geçişi, animasyon desteği |
+| Font | Inter (Google Fonts) | Yüksek okunurluk, Türkçe karakter desteği |
+
+## Responsive Breakpoint'ler
+
+| Breakpoint | Genişlik | Davranış |
+|---|---|---|
+| Mobile | ≤ 640px | Tek sütun, hamburger menü, basitleştirilmiş hero |
+| Tablet | 641px – 1024px | 2 sütun grid, hamburger menü |
+| Desktop | ≥ 1025px | 3 sütun grid, tam navigasyon |
+
+## Erişilebilirlik
+
+- Semantik HTML: `<header>`, `<main>`, `<section>`, `<nav>`, `<footer>`
+- Skip link: klavye kullanıcıları için "Ana içeriğe geç"
+- `aria-expanded`, `aria-controls`, `aria-labelledby`, `aria-describedby` kullanımı
+- `role="alert"` ile form hata mesajları ekran okuyucuya bildirilir
+- Modal: focus trap, ESC kapatma, scroll kilidi
+- Tüm interaktif elemanlar `focus-visible` ile görünür odak göstergesi
+
+## Bileşen API'si
+
+### Button
+```tsx
+<Button variant="primary" size="md" isLoading={false} fullWidth={false}>
+  Tıkla
+</Button>
+```
+`variant`: `primary | secondary | ghost | danger`  
+`size`: `sm | md | lg`
+
+### Input
+```tsx
+<Input
+  label="E-posta"
+  type="email"
+  value={email}
+  onChange={(v) => setEmail(v)}
+  error="Geçersiz format"
+  required
+/>
+```
+
+### Modal
+```tsx
+<Modal isOpen={open} onClose={() => setOpen(false)} title="Başlık" size="md">
+  <p>İçerik</p>
+</Modal>
+```
+
+### Accordion
+```tsx
+<Accordion items={[{ id: '1', question: 'Soru?', answer: 'Cevap.' }]} allowMultiple={false} />
+```
+
+## Kod Standartları
+
+- **Linting**: ESLint + Oxlint
+- **Formatting**: Prettier (`singleQuote`, `semi`, `tabWidth: 2`)
+- **Commits**: [Conventional Commits](https://www.conventionalcommits.org/) (`feat:`, `fix:`, `docs:`, `style:`)
+- **Branches**: `main` (production) → `dev` → `feat/*` / `fix/*`
+
+## Lighthouse Hedefi
+
+| Metrik | Hedef |
+|---|---|
+| Performance | ≥ 90 |
+| Accessibility | ≥ 90 |
+| Best Practices | ≥ 90 |
+| SEO | ≥ 90 |
+
+*(Ekran görüntüsü deploy sonrası eklenecek)*
