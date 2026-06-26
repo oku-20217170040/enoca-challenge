@@ -6,13 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Modern, erişilebilir ve performanslı ürün tanıtım sayfası." />
     <title>Enoca — Modern Ürün Platformu</title>
-    <!-- Inter font — Google Fonts CDN, display=swap Lighthouse performansı için -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!--
+      Non-blocking font yükleme tekniği:
+      1. media="print" → browser bunu düşük öncelikli yükler (sayfayı bloklamaz)
+      2. onload → yüklenince media="all" yap (aktif et)
+      3. <noscript> → JS kapalıysa normal yükle
+    -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      />
+    </noscript>
   </head>
   <body>
     <div id="root"></div>
