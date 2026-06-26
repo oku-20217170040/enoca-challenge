@@ -4,7 +4,7 @@ Tek sayfalık ürün tanıtım landing sayfası ve yeniden kullanılabilir UI bi
 
 ## Canlı Demo
 
-[enoca-challenge.vercel.app](https://enoca-challenge.vercel.app) *(deploy sonrası güncellenecek)*
+[enoca-challenge.vercel.app](https://enoca-challenge.vercel.app)
 
 ## Kurulum
 
