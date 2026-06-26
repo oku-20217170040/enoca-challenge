@@ -78,10 +78,11 @@ const Navbar: React.FC = () => {
       </nav>
 
       {/* Mobil menü */}
+      {/* inert — kapalıyken içindeki tüm elemanlar hem görünmez hem focus edilemez */}
       <div
         id="mobile-menu"
         className={`${styles.mobileMenu} ${isMenuOpen ? styles.mobileMenuOpen : ''}`}
-        aria-hidden={!isMenuOpen}
+        {...(!isMenuOpen ? { inert: '' } : {})}
       >
         <ul role="list">
           {navLinks.map((link) => (
