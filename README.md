@@ -118,13 +118,13 @@ Detaylar için bkz. [`/docs/`](./docs/) klasörü (ADR dosyaları).
 - **Commits**: [Conventional Commits](https://www.conventionalcommits.org/) (`feat:`, `fix:`, `docs:`, `style:`)
 - **Branches**: `main` (production) → `dev` → `feat/*` / `fix/*`
 
-## Lighthouse Hedefi
+## Lighthouse Sonuçları
 
-| Metrik | Hedef |
+| Metrik | Skor |
 |---|---|
-| Performance | ≥ 90 |
-| Accessibility | ≥ 90 |
-| Best Practices | ≥ 90 |
-| SEO | ≥ 90 |
+| Performance | 99 |
+| Accessibility | 96 |
+| Best Practices | 100 |
+| SEO | 100 |
 
-*(Ekran görüntüsü deploy sonrası eklenecek)*
+Detaylı raporlar: [`docs/Lighthouse_1.html`](./docs/Lighthouse_1.html) · [`docs/Lighthouse_2.html`](./docs/Lighthouse_2.html) · [`docs/Lighthouse_3.html`](./docs/Lighthouse_3.html)
